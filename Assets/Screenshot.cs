@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Valve.VR;
 
 public class Screenshot : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Screenshot : MonoBehaviour
     public GameObject Photo;
     public float printTime;
     bool printing;
+    [SerializeField] SteamVR_Action_Boolean TakeShot;
 
 
     // Start is called before the first frame update
@@ -18,6 +20,7 @@ public class Screenshot : MonoBehaviour
         instance = this;
         myCamera = GetComponent<Camera>();
         printing = false;
+        
     }
 
     // Update is called once per frame
@@ -72,7 +75,15 @@ public class Screenshot : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Screenshot.TakeScreenshot_Static(300, 200);
+        }*/
+    }
+
+    public void OnGrab()
+    {
+        if (TakeShot.stateDown)
         {
             Screenshot.TakeScreenshot_Static(300, 200);
         }
