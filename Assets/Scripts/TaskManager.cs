@@ -11,6 +11,7 @@ public class TaskManager : MonoBehaviour
         public Collider Target;
         public string text;
         public bool Horizontal;
+        public bool PosSwitcer;
     }
 
     [SerializeField] List<Task> tasks;
