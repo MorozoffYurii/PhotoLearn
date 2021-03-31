@@ -9,10 +9,12 @@ public class CameraScript : MonoBehaviour
     public bool CorrectPhoto;
     public Camera Camera;
     public Collider SearchedObj;
-    [SerializeField] LineRenderer line;    
+    [SerializeField] LineRenderer line;
+    public static CameraScript cameraScript;
     // Start is called before the first frame update
     void Start()
     {
+        cameraScript = this;
         line.enabled = false;
         line.startColor = Color.red;
 

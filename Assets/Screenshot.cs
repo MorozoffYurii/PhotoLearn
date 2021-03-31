@@ -86,6 +86,8 @@ public class Screenshot : MonoBehaviour
         if (TakeShot.stateDown)
         {
             Screenshot.TakeScreenshot_Static(300, 200);
+            if (CameraScript.cameraScript.CorrectPhoto)
+                TaskManager.taskManager.NextTask();
         }
     }
 }

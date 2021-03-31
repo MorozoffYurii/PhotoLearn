@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class ChangePoses : MonoBehaviour
 {
+    public static ChangePoses changePoses;
     [SerializeField] List<GameObject> Poses;
     int i = 0;
     // Start is called before the first frame update
-    
+    private void Start()
+    {
+        changePoses = this;
+    }
     public void NextPos()
     {
         Poses[i].SetActive(false);
