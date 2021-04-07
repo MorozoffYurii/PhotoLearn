@@ -15,6 +15,7 @@ public class TaskManager : MonoBehaviour
         public string text;
         public bool Horizontal;
         public GameObject NextPos;
+        public List<GameObject> Barriers = new List<GameObject>();
     }
 
     [SerializeField] List<Task> tasks;
@@ -41,7 +42,9 @@ public class TaskManager : MonoBehaviour
         
         if (tasks[index].NextPos)
             ChangePoses.changePoses.NextPos(tasks[index].NextPos);
+        BarrierActivation(tasks[index], false);
         index++;
+        BarrierActivation(tasks[index], true);
         if (index == tasks.Count)
         {
             textMesh.text = "Все задания завершены!";
@@ -51,6 +54,15 @@ public class TaskManager : MonoBehaviour
             SetCameraTask();
         }
         
+    }
+
+    void BarrierActivation(Task task, bool enabled)
+    {
+        if (task.Barriers.Count != 0)
+            foreach (GameObject barrier in task.Barriers)
+            {
+                barrier.SetActive(enabled);
+            }
     }
 
     // Update is called once per frame
