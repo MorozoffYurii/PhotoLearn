@@ -14,7 +14,7 @@ public class TaskManager : MonoBehaviour
         public Collider Target;
         public string text;
         public bool Horizontal;
-        public bool PosSwitcer;
+        public GameObject NextPos;
     }
 
     [SerializeField] List<Task> tasks;
@@ -39,16 +39,15 @@ public class TaskManager : MonoBehaviour
     public void NextTask()
     {
         
-        if (tasks[index].PosSwitcer)
-            ChangePoses.changePoses.NextPos();
+        if (tasks[index].NextPos)
+            ChangePoses.changePoses.NextPos(tasks[index].NextPos);
         index++;
         if (index == tasks.Count)
         {
             textMesh.text = "Все задания завершены!";
         }
         else
-        {
-            
+        {            
             SetCameraTask();
         }
         

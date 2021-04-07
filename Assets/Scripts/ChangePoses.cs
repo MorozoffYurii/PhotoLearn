@@ -21,6 +21,14 @@ public class ChangePoses : MonoBehaviour
         Poses[i].SetActive(true);
     }
 
+    public void NextPos(GameObject Pos)
+    {
+        Poses[i].SetActive(false);
+        i = Poses.IndexOf(Pos);
+        if (i == Poses.Count)
+            i = 0;
+        Poses[i].SetActive(true);
+    }
     public void PreviousPos()
     {
         Poses[i].SetActive(false);
