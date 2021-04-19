@@ -39,20 +39,19 @@ public class TaskManager : MonoBehaviour
 
     public void NextTask()
     {
-        
-        if (tasks[index].NextPos)
-            ChangePoses.changePoses.NextPos(tasks[index].NextPos);
-        BarrierActivation(tasks[index], false);
-        index++;
-        BarrierActivation(tasks[index], true);
-        if (index == tasks.Count)
+        if (index == tasks.Count - 1)
         {
             textMesh.text = "Все задания завершены!";
         }
         else
-        {            
-            SetCameraTask();
-        }
+        {
+            if (tasks[index].NextPos)
+                ChangePoses.changePoses.NextPos(tasks[index].NextPos);
+            BarrierActivation(tasks[index], false);
+            index++;
+            BarrierActivation(tasks[index], true);
+            SetCameraTask();      
+        }       
         
     }
 

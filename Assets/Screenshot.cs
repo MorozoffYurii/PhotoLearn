@@ -7,7 +7,7 @@ using Valve.VR;
 public class Screenshot : MonoBehaviour
 {
     private static Screenshot instance;
-    Camera myCamera;
+    [SerializeField] Camera myCamera;
     public GameObject Photo;
     public float printTime;
     bool printing;
@@ -18,21 +18,11 @@ public class Screenshot : MonoBehaviour
     void Start()
     {
         instance = this;
-        myCamera = GetComponent<Camera>();
+        //myCamera = GetComponent<Camera>();
         printing = false;
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void NewPaper()
-    {
-
-    }
 
     void TakeScreenshot(int width, int heigh)
     {
@@ -52,6 +42,7 @@ public class Screenshot : MonoBehaviour
             //image.sprite = sprite;
 
             //Creating photo
+            print(Photo); 
             GameObject photo = Instantiate(Photo, Photo.transform.position, Photo.transform.rotation);
             photo.SetActive(true);
             photo.GetComponent<PhotoInfo>().image.sprite = sprite;

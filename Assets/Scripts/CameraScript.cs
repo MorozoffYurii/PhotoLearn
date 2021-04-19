@@ -7,7 +7,6 @@ public class CameraScript : MonoBehaviour
     public bool Horizontal;
     public Vector3 TestAngle;
     public bool CorrectPhoto;
-    public Camera Camera;
     public Collider SearchedObj;
     [SerializeField] LineRenderer line;
     public static CameraScript cameraScript;
